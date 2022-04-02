@@ -1,9 +1,9 @@
 from pyexpat import model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,PasswordResetForm
 from django.contrib.auth.models import User
-class LoginForm(AuthenticationForm):
+class LoginForm(AuthenticationForm,PasswordResetForm):
     def __init__(self, *args,  **kwargs): 
        super().__init__(*args, **kwargs)
        self.fields["username"].widget.attrs.update({
@@ -11,7 +11,7 @@ class LoginForm(AuthenticationForm):
           'type':'text',
           'class':'form-control',
           'autocomplete':'off',
-          'placeholder':'Full Name',
+          'placeholder':'Enter Your RegisterName',
           'aria-label':'Full Name',
 
        })

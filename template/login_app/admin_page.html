@@ -1,0 +1,25 @@
+<html>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>user list</h1>
+    <table>
+        <thead>     
+            <thead>
+                <th>username</th>
+                <th>email</th>
+            </thead>        
+        </thead>
+       <tr>
+        {% for lo in user %}
+            <td>{{lo.username}}</td>
+            <td>{{lo.email}}</td>
+        </tr>       
+            {% endfor %}
+    </table>   
+    
+   <a href="#"><button type="button">Add New User</button></a>
+    {% endblock content %}  
+
+    </html>
+      
+  
