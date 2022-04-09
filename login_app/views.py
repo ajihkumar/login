@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 
 
 from .forms import createuserform 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,UserManager
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
@@ -21,48 +21,25 @@ def home(request):
     return render(request,'signup.html')
   
 def register(request):    
-   if request.method=='POST':
-        name=request.POST["username"]
-        email=request.POST["email"]
-        password1=request.POST["password1"]
-        password2=request.POST["password2"]
-        
-        if User.objects.filter(username=name).first():
-             messages.error(request,'username,already taken...!!!,plz enter another username')
-             return redirect('register')
-        '''if User.objects.filter(email=email).first():
-             messages.error(request,'email,already taken...!!!')
-             return redirect('register')'''
-        if len(name)>12:
-            messages.error(request,'username only 12 characters') 
-            return redirect('register') 
-        
-        if not name.isalnum():
-            messages.error(request,'username must be Alpha-Numeric ')
-            return redirect('register') 
-        if password1==password2:        
-            user=User.objects.create_user(username=name,email=email,password=password1)
-            #user.is_staff=True
-            #   user.is_superuser=True
-            user.save()
+   if request.method == 'POST':
+        form =createuserform(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful." )
+            return redirect("signin")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+   form = createuserform()
+   return render (request=request, template_name="register.html", context={"form":form})
 
-            ''' #welcome email
-            subject="welcome to login_app -Django login" 
-            message="hello"
-            from_email='ajitharunachalam9100@gmail.com'
-            to_list=[user.email]
-            send_mail(subject,message,from_email,to_list,fail_silently=True)
-        '''
-        
-            messages.success(request,'Your account has been created! You are able to signin')
-            return redirect('signin')
-        else:
-            messages.warning(request,'Password Mismatching...!!!')
-            return redirect('register')   
 
-                
-   form=createuserform()        
-   return render(request,"register.html",{'form':form})
+
+
+
+
+         
+        
+    
 
 
 
@@ -73,8 +50,8 @@ def signin(request):
         user = authenticate(request, username = name, password=password1)
         if user is not None and user.is_staff==True and user.is_superuser==True:
             form = login(request, user)
-            return redirect('admin_page')
-        elif user is not None and user.is_staff==True:
+            return redirect('superadmin')
+        elif user is not None and user.is_staff==True and user.is_superuser==False:
             form = login(request, user)
             return redirect('staff') 
         elif user is not None:

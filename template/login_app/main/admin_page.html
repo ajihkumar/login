@@ -1,0 +1,129 @@
+<html>
+{% extends 'base.html' %}
+{% block content %}
+<h1>ALL</h1>
+<table>
+    <thead>
+        <thead>
+            <th>
+                <h1>username</h1>
+            </th>
+            <th>
+                <h1>email</h1>
+            </th>
+        </thead>
+    </thead>
+    <tr>
+        {% for lo in user %}
+
+        <td>
+            <h2>{{lo.is_staff}}</h2>
+        </td>
+        <td>
+            <h2>{{lo.email}}</h2>
+        </td>
+        <td>
+            <h2><a href="">update </a><a href="/delete/{{lo.id}}"> delete </a></h2>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<h1>STAFF AND TEACHER</h1>
+<table>
+    <thead>
+        <thead>
+            <th>
+                <h1>username</h1>
+            </th>
+            <th>
+                <h1>email</h1>
+            </th>
+        </thead>
+    </thead>
+    <tr>
+        {% for lo in user %}
+           {% if lo.is_staff %}
+        <td>
+            <h1>{{lo.username}}</h1>
+        </td>
+        <td>
+            <h1>{{lo.email}}</h1>
+        </td>
+        <td>
+            <h1><a href="">update </a><a href="/delete/{{lo.id}}"> delete </a></h1>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+
+</table>
+<h1>ADMIN</h1>
+<table>
+    <thead>
+        <thead>
+            <th>
+                <h1>username</h1>
+            </th>
+            <th>
+                <h1>email</h1>
+            </th>
+        </thead>
+    </thead>
+    <tr>
+        {% for lo in user %}
+           {% if lo.is_superuser %}
+        <td>
+            <h1>{{lo.username}}</h1>
+        </td>
+        <td>
+            <h1>{{lo.email}}</h1>
+            
+        </td>
+        <h1>{{lo.address}}</h1>
+        <td>
+            <h1><a href="">update </a><a href="/delete/{{lo.id}}"> delete </a></h1>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+
+</table>
+<h1>ADMIN REGISTER</h1>
+<table>
+    <thead>
+        <thead>
+            <th>
+                <h1>SCLNAME</h1>
+            </th>
+            <th>
+                <h1>SCL ID</h1>
+            </th>
+            <th>
+                <h1>EMAIL</h1>
+            </th>
+            
+        </thead>
+    </thead>
+    <tr>
+    {% for lo in mydata %}
+    <td>
+            <h1>{{lo.scl_name}}</h1>
+        </td>
+        <td>
+            <h1>{{lo.scl_id}}</h1>
+            
+        </td>
+        <h1>{{lo.email}}</h1>
+        <td>
+            <h1><a href="">update </a><a href="/delete/{{lo.id}}"> delete </a></h1>
+        </td>
+    </tr>
+   
+    {% endfor %}
+
+</table>
+
+
+<a href="#"><button type="button">Add New User</button></a>
+
+{% endblock %}

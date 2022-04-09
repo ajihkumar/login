@@ -16,5 +16,10 @@ urlpatterns = [
     path('staff/',staffviews.staff,name="staff"),
     path('admin_page/',adminviews.admin_page,name="admin_page"),
     path('parents/',parentviews.parent_page,name="parents"),
+    path('parent_edit/',parentviews.parent_edit,name="parent_edit"),
+    path('delete/<id>',adminviews.delete,name="delete"),
+    path('superadmin/',adminviews.superadmin_page,name="superadmin"),
+    path('add_register/',adminviews.admin_site_register,name="add_register"),
+
 
 ]    

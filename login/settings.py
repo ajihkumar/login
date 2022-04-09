@@ -134,3 +134,5 @@ CRISPY_TEMPLATE_PACK='Bootstrap v5.0.2'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'signup'
+
+
