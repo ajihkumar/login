@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 
 
 from .forms import createuserform 
-from django.contrib.auth.models import User,UserManager
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required

@@ -1,10 +1,12 @@
 
-from pyexpat import model
+
+
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
 from django import forms
-from .models import datas
+from .models import createparentss, datas
+
 
 
       
@@ -85,6 +87,9 @@ class createuserform(UserCreationForm):
       'password1','password2','address'
       )
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+    
 class add_studentform(forms.ModelForm):
     def __init__(self, *args,  **kwargs): 
        super().__init__(*args, **kwargs)
@@ -113,12 +118,7 @@ class add_studentform(forms.ModelForm):
           'aria-label':'mail',
        })
        self.fields["Dob"].widget.attrs.update({ 
-          'name':'Dob',
-          'type':'text',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'yyyy/mm/dd',
-          'aria-label':'Date Of Birth',
+          
        })
        self.fields["Age"].widget.attrs.update({ 
           'name':'Age',
@@ -142,10 +142,72 @@ class add_studentform(forms.ModelForm):
        })
     class Meta():
       model = datas
-      fields = ['Firstname','Secondname','mail','Dob','Age','Gender','Address']
-      
+      fields = '__all__'
+      widgets = {
+            'Dob': DateInput() 
+            
+         
+            
+        }
    
+#create parents
 
+class add_parentsform(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder':'Password', }))
+    def __init__(self, *args,  **kwargs): 
+       super().__init__(*args, **kwargs)
+       self.fields["firstname"].widget.attrs.update({ 
+          'name':'firstname',
+          'type':'text',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'First Name',
+          'aria-label':'First Name',
+       })
+       self.fields["secondname"].widget.attrs.update({ 
+          'name':'secondname',
+          'type':'text',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'Second Name',
+          'aria-label':'Second Name',
+       })
+       self.fields["username"].widget.attrs.update({ 
+          'name':'username',
+          'type':'text',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'User Name',
+          'aria-label':'User Name',
+       })
+       self.fields["mail"].widget.attrs.update({ 
+          'name':'mail',
+          'type':'email',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'mail',
+          'aria-label':'mail',
+       }) 
+       self.fields["address"].widget.attrs.update({ 
+          'name':'address',
+          'type':'text',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'Address',
+          'aria-label':'Address',
+       })
+       self.fields["zip_code"].widget.attrs.update({ 
+          'name':'zip_code',
+          'type':'text',
+          'class':'form-control',
+          'autocomplete':'on',
+          'placeholder':'zip_code',
+          'aria-label':'zip_code',
+       })
+    class Meta():
+      model = createparentss
+      fields = '__all__'
+      
       
 
           

@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'assets/css/admin.css' %}">
@@ -53,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'add_register' %}">
+                        <a class="nav-link" href="#">
                             <i class="bi-people-fill"></i> Enrollment 
 
                         </a>
@@ -65,7 +66,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'list_parent' %}">
+                        <a class="nav-link" href="{% url 'create_parent' %}">
                             <i class="bi bi-bookmarks"></i>Parents 
                         </a>
                     </li>
@@ -187,7 +188,12 @@
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
                                 
-                                
+                                <a href="{% url 'create_parent' %}" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                    <span class=" pe-2">
+                                        <i class="bi bi-plus"></i>
+                                    </span>
+                                    <span>Create parents</span>
+                                </a>
                                
                             </div>
                         </div>
@@ -211,112 +217,9 @@
         <main class="py-6 bg-surface-secondary">
             <div class="container-fluid">
                 <!-- Card stats -->
-                <div class="row g-6 mb-6">
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Childrens                                          </span>
-                                        <span class="h3 font-bold mb-0"></span><h3>{{count}}</h3>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                            <i class="bi-list-task"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Prospects</pre></span>
-                                        <span class="h3 font-bold mb-0">0</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                            <i class="bi-calendar-check"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Toured </span>
-                                        <span class="h3 font-bold mb-0">0</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
-                                            <i class="bi bi-clock-history"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Applied</span>
-                                        <span class="h3 font-bold mb-0">0</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                            <i class="bi-app-indicator"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-6 mb-6">
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card shadow border-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Waitlist</span>
-                                    <span class="h3 font-bold mb-0">0</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                        <i class="bi-people-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card shadow border-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Accounts</span>
-                                    <span class="h3 font-bold mb-0">0</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                        <i class="bi-wallet-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
+                    
+               
                 <div class="card shadow border-0 mb-7">
                     <div class="card-header">
                         <h5 class="mb-0">Status List</h5>
@@ -325,40 +228,36 @@
                         <table class="table table-hover table-nowrap">
                             <thead class="thead-light">
                                 <tr>
-                                    </th>
-                                    <th scope="col">STUDENT NAME</th>
-                                    <th scope="col">DATE OF BIRTH</th>
-                                    <th scope="col">GENDER</th>
+                               </th>
+                                    <th scope="col">USER NAME</th>   
                                     <th scope="col">EMAIL</th>
                                     <th scope="col">ADDRESS</th>
+                                    <th scope="col">ZIB-CODE</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                    {% for student in obj  %}
+                                {% for i in parent %}
                                 <tr>
                                     <td>
                                         <img alt="..." src="{% static 'assets\img\logo\Screenshot1.png' %}" class="avatar avatar-xs rounded-circle me-2">
                                         <a class="text-heading font-semibold" href="#">
-                                            {{student.Firstname}}
+                                            {{i.username}}
                                         </a>
                                     </td>
                                     <td>
-                                       {{student.Dob}}
+                                        <img alt="..." src="{% static 'assets\img\logo\WhatsApp Image email.jpeg' %}" class="avatar avatar-xs rounded-circle me-2">
+                                        {{i.mail}}
                                     </td>
                                     <td>
-                                       
+                                        
                                         <a class="text-heading font-semibold" href="#">
-                                           {{student.Gender}}
+                                            {{i.address}}
                                         </a>
                                     </td>
                             
                                     <td>
-                                        <img alt="..." src="{% static 'assets\img\logo\WhatsApp Image email.jpeg' %}" class="avatar avatar-xs rounded-circle me-2">
-                                        {{student.mail}}
-                                    </td>
-                                    <td>
                                         <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>{{student.Address}}
+                                            <i class="bg-success"></i>{{i.zip_code}}
                                         </span>
                                     </td>
                                     <td class="text-end">
@@ -368,19 +267,20 @@
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </td>
-                                </tr>
-                                {% endfor %}
+                                </tr>    
+                                {% endfor %}   
                             </tbody>
-                            
                         </table>
                     </div>
+                   
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm"><p>Showing {{count}} items</p></span>
+                        <span class="text-muted text-sm"> <p>Showing {{count}} items </p> </span>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 </div>
+
 </body>
 </html>
