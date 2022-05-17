@@ -1,0 +1,100 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block content %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'assets/css/views.css' %}">
+              
+  <link rel="stylesheet" href="{% static 'assets/css/admin.css' %}">
+ 
+</head>
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->{{student}}gfhhhfgh
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-0 ls-tight">student-profile</h1><br>
+                            </div>
+                            <!-- Actions -->
+                            <div class="col-sm-6 col-12 text-sm-end">
+                                <div class="mx-n1">
+
+
+                        
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <h3>List of Details</h3>
+                    <br>
+                    <!-- Google Fonts-->
+
+<!-- Bootstrap CSS-->
+<!-- Font Awesome CSS-->
+
+         <form action="" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+             {{form.as_p}}
+             <button type="submit">upload</button>
+             </form>
+             {% for image in img %}
+             <img class="profile_img" src="{{image.image.url}}" alt="student dp">
+         
+             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                <a href="{% url 'delete_parent' image.id %}" class="bi bi-trash"></a>
+               
+            </button>
+      
+          
+                 
+             {% endfor %}
+                  
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

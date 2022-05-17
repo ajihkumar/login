@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login_app',
     'crispy_forms',
+    'widget_tweaks',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -120,11 +122,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",   
 ]
-CRISPY_TEMPLATE_PACK='Bootstrap v5.0.2'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Media files (Images)
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 
 
 
@@ -133,6 +143,6 @@ CRISPY_TEMPLATE_PACK='Bootstrap v5.0.2'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'signup'
+LOGIN_REDIRECT_URL = 'afterlogin'
 
 

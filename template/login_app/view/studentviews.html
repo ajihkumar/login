@@ -1,0 +1,263 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block content %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'assets/css/views.css' %}">
+              
+  <link rel="stylesheet" href="{% static 'assets/css/admin.css' %}">
+ 
+</head>
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-0 ls-tight">student-profile</h1><br>
+                            </div>
+                            <!-- Actions -->
+                            <div class="col-sm-6 col-12 text-sm-end">
+                                <div class="mx-n1">
+
+
+                        
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <h3>List of Details</h3>
+                    <br>
+                    <!-- Google Fonts-->
+
+<!-- Bootstrap CSS-->
+<!-- Font Awesome CSS-->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <img class="profile_img" src="{% static 'assets\img\logo\Screenshot1.png' %}" alt="student dp">
+            <h3>bright</h3>
+          </div>
+         
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Student Name:</strong>  {{ obj.get_name }} </p>
+            <p class="mb-0"><strong class="pr-1">Age:</strong> {{ obj.Age }} </p>
+            <p class="mb-0"><strong class="pr-1">Gender:</strong>  {{ obj.Gender }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              
+              <tr>
+                <th width="30%">First Name</th>
+                <td width="2%">:</td>
+                <td>{{ user.first_name }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Second Name	</th>
+                <td width="2%">:</td>
+                <td>{{ user.last_name }}</td>
+              </tr>
+              <tr>
+                <th width="30%">User Name	</th>
+                <td width="2%">:</td>
+                <td>{{ user.username }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Date Of Birth </th>
+                <td width="2%">:</td>
+                <td>{{ obj.Dob }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Age</th>
+                <td width="2%">:</td>
+                <td>{{ obj.Age }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Gender</th>
+                <td width="2%">:</td>
+                <td>{{ obj.Gender }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Date-of-joined</th>
+                <td width="2%">:</td>
+                <td>{{ user.date_joined }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Email</th>
+                <td width="2%">:</td>
+                <td>{{ user.email }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Contact No</th>
+                <td width="2%">:</td>
+                <td>{{ obj.mobile }}</td>
+              </tr>
+              <tr>
+                <th width="30%">Student Status</th>
+                <td width="2%">:</td>
+                <td>{{ obj.status }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+          <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Student Address</h3>
+          </div>
+          <div class="card-body pt-0">
+              <p>{{ user.address }}</p>
+         
+
+                  
+              
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    </body>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </html>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--html>
+  <head>
+    <link rel="stylesheet" href="{% static 'assets/css/views.css' %}">
+</head>
+<!-- Google Fonts>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+<!-- Bootstrap CSS >
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<!-- Font Awesome CSS >
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
+            <h3>Ishmam Ahasan Samin</h3>
+          </div>
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Student ID:</strong>321000001</p>
+            <p class="mb-0"><strong class="pr-1">Class:</strong>4</p>
+            <p class="mb-0"><strong class="pr-1">Section:</strong>A</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">Roll</th>
+                <td width="2%">:</td>
+                <td>125</td>
+              </tr>
+              <tr>
+                <th width="30%">Academic Year	</th>
+                <td width="2%">:</td>
+                <td>2020</td>
+              </tr>
+              <tr>
+                <th width="30%">Gender</th>
+                <td width="2%">:</td>
+                <td>Male</td>
+              </tr>
+              <tr>
+                <th width="30%">Religion</th>
+                <td width="2%">:</td>
+                <td>Group</td>
+              </tr>
+              <tr>
+                <th width="30%">blood</th>
+                <td width="2%">:</td>
+                <td>B+</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+          <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h3>
+          </div>
+          <div class="card-body pt-0">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+-->

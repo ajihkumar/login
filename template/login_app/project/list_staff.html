@@ -1,0 +1,115 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-0 ls-tight">REGISTER</h1><br>
+                            </div>
+                            <!-- Actions -->
+                            <div class="col-sm-6 col-12 text-sm-end">
+                                <div class="mx-n1">
+
+
+                                    <a href="" class="btn d-inline-flex btn-sm btn-primary mx-1">
+
+                                        <span>List</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Nav -->
+                        <!--<ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">All files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">Shared</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">File requests</a>
+                        </li>
+                    </ul>-->
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <h3>Create staff Create of Details</h3>
+                    <br>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags}}">
+                            {{message}}
+
+                        </div>
+
+                        {% endfor %}
+
+                        {% endif %}
+                        <div class="form-group form-box clearfix">
+                            <label for="first_name">First Name</label></label>
+                            {% render_field form.first_name class="form-control" placeholder="First Name" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="Last Name">Last Name</label></label>
+                            {% render_field form.last_name class="form-control" placeholder="Last Name" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="Username">Username</label></label>
+                            {% render_field form.username class="form-control" placeholder="Username" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="Email">Email</label></label>
+                            {% render_field form.email class="form-control" placeholder="Email" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="Mobile">Mobile No:</label></label>
+                            {% render_field form1.mobile class="form-control" placeholder="Mobile No" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="password">password:</label></label>
+                            {% render_field form.password  type="password" class="form-control" placeholder="password" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">   
+                            <label for="password">Address</label></label>
+                            {% render_field form.address  type="text" class="form-control" placeholder="Address" %}
+                        </div>
+                        
+                        
+                            <p class="form-group">By logging in, I agree to the <a href="#">Terms of Service</a></p>
+
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn btn-primary btn-lg btn-theme"><span>Register</span></button>
+                            </div>
+
+                    </form>
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

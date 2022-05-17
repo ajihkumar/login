@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -56,7 +56,7 @@
                             {% load crispy_forms_tags %}
 
 
-                            <h3>Create An Account</h3>
+                            <h3>Create An Admin Account</h3>
                             <form method="post">
                                 {% csrf_token %}
                                 {% if messages %}
@@ -70,36 +70,23 @@
 
                                 {% endif %}
                                 <div class="form-group form-box">
-                                    {{form.first_name}}
+                                    {% render_field form.first_name class="form-control" placeholder="First Name" %}
+                                   
                                     <i class="flaticon-user"></i>
                                 </div>
                                 <div class="form-group form-box">
-                                    {{form.last_name}}
+                                    {% render_field form.last_name class="form-control" placeholder="Last Name" %}
                                     <i class="flaticon-user"></i>
                                 </div>
                                 <div class="form-group form-box">
-                                    {{form.username}}
+                                    {% render_field form.username class="form-control" placeholder="Username" %}
                                     <i class="flaticon-user"></i>
                                 </div>
                                 <div class="form-group form-box">
-                                    {{form.address}}
+                                    {% render_field form.password  text="password" class="form-control" placeholder="Password" %}
                                     <i class="flaticon-mail-2"></i>
                                 </div>
-                                <div class="form-group form-box">
-                                    {{form.email}}
-                                    <i class="flaticon-mail-2"></i>
-
-                                </div>
-                                <div class="form-group form-box clearfix">
-                                    {{form.password1}}
-                                    <i class="flaticon-password"></i>
-                                </div>
-
-                                <div class="form-group form-box clearfix">
-                                    {{form.password2}}
-                                    <i class="flaticon-password"></i>
-                                </div>
-
+                                
 
 
                                 <p class="form-group">By logging in, I agree to the <a href="#">Terms of Service</a></p>

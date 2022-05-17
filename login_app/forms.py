@@ -1,91 +1,72 @@
 
 
 
+from dataclasses import Field
+from multiprocessing import Value
+from optparse import Option
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
 from django import forms
-from .models import createparentss, datas
+from .models import CustomUser, createparentss, createstaffs, datas, upload_image
+from login_app import models
 
 
-
+class AdminSigupForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password']
       
 
 
 
-class createuserform(UserCreationForm):
-  
-   def __init__(self, *args,  **kwargs): 
-       super().__init__(*args, **kwargs)
-       self.fields["first_name"].widget.attrs.update({ 
-          'name':'first_name',
-          'type':'text',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'First Name',
-          'aria-label':'First Name',
-       })
-       self.fields["last_name"].widget.attrs.update({ 
-          'name':'last_name',
-          'type':'text',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'Last Name',
-          'aria-label':'Last Name',
-       })
-       self.fields["username"].widget.attrs.update({ 
-          'name':'username',
-          'type':'text',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'User Name',
-          'aria-label':'Full Name',
-       })
-       self.fields["address"].widget.attrs.update({ 
-          'name':'address',
-          'type':'text',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'Address',
-          'aria-label':'Address',
-       })
-       self.fields["email"].widget.attrs.update({
-          'name':'email',
-          'type':'email',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'Email Address',
-          'aria-label':'Email Address',
-
-       })
-       self.fields["password1"].widget.attrs.update({
-          'name':'password1',
-          'type':'password',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'password',
-          'aria-label':'password',
-
-       })
-       self.fields["password2"].widget.attrs.update({
-          'name':'password2',
-          'type':'password',
-          'class':'form-control',
-          'autocomplete':'on',
-          'placeholder':'confirm password',
-          'aria-label':'password',
-
-       })
-
-
-
-   class Meta(UserCreationForm.Meta):
+class createuserform(forms.ModelForm):
+  class Meta:
       model=User
       fields=(
       'first_name','last_name',
       'username','email',
-      'password1','password2','address'
+      'address','password',
       )
+class TeacherExtraForm(forms.ModelForm):
+    class Meta:
+        model=models.TeacherExtra
+        fields=['mobile','status']      
+class StudentUserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password','address','email']
+class StudentExtraForm(forms.ModelForm):
+    class Meta:
+        model=models.StudentExtra
+        fields=['mobile','status','Dob','Age','Gender','parentname'] 
+
+class uploadform(forms.ModelForm):
+    class Meta:
+         model=upload_image
+         fields=['image',]
+
+
+
+
+class createuserform1(UserCreationForm):
+   class Meta(UserCreationForm.Meta):
+      model=CustomUser
+      fields=(
+      'first_name','last_name',
+      'username','email',
+      'address',
+      )
+
+class createuserform2(forms.ModelForm):
+   class Meta:
+      model=CustomUser
+      fields=('first_name','last_name',
+      'username','email',
+      'status','address',
+      )
+
+
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -208,6 +189,15 @@ class add_parentsform(forms.ModelForm):
       model = createparentss
       fields = '__all__'
       
-      
+#create staffs 
 
-          
+class add_staffform(forms.ModelForm):
+    password = forms.CharField(widget=forms.TextInput(attrs={'name':'password','class':'form-control','type':'password','placeholder':'Password','autocomplete':'off'}))
+    
+    
+    
+    class Meta():
+      model = CustomUser
+      fields = '__all__'
+           
+    

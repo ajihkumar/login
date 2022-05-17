@@ -1,0 +1,133 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-0 ls-tight">UPDATE</h1><br>
+                            </div>
+                            <!-- Actions -->
+                            <div class="col-sm-6 col-12 text-sm-end">
+                                <div class="mx-n1">
+
+
+                        
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Nav -->
+                        <!--<ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">All files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">Shared</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">File requests</a>
+                        </li>
+                    </ul>-->
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <h3>Update Student List of Details</h3>
+                    <br>
+                    
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags}}">
+                            {{message}}
+
+                        </div>
+
+                        {% endfor %}
+
+                        {% endif %}
+                        <div class="form-group form-box">
+                            <label>First Name</label>
+                            {% render_field form1.first_name class="form-control" placeholder="First Name" %}                          
+                        </div>
+                        <br>
+                        <div class="form-group form-box">
+                            <label>Second Name</label>
+                            {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label>User Name</label>
+                            {% render_field form1.username class="form-control" placeholder="User Name" %}
+                            <i class="flaticon-password"></i>
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label>Email</label>
+                            {% render_field form1.email class="form-control" placeholder="Email" %}           
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label>Mobile No</label>
+                            {% render_field form2.mobile class="form-control" placeholder="Contact" %}           
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label>Date Of Birth</label>
+                            {% render_field form2.Dob type="Date"  placeholder="Enter Your Date-of-Birth" %}           
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label> Age </label>
+                            {% render_field form2.Age class="form-control" type="text" placeholder="Enter Your Age" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label> Gender </label>
+                            {% render_field form2.Gender class="form-control"  placeholder="Enter Your Gender" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            <label> Status </label>
+                            {% render_field form2.status class="form-control"  placeholder="Enter Your status" %}
+                        </div>
+                        <br>
+                        <div class="form-group form-box clearfix">
+                            
+                            {% render_field form1.password class="form-control" type="hidden" placeholder="Password" %}
+                        </div>
+                            <br>
+                            <div class="form-group form-box clearfix">
+                                <label for="exampleInputEmail1">Address</label>
+                                {% render_field form1.address class="form-control" type="text" placeholder="Address" %}
+                                <i class="flaticon-password"></i>
+                            </div>
+                            <p class="form-group">By logging in, I agree to the <a href="#">Terms of Service</a></p>
+
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn btn-primary btn-lg btn-theme"><span>Update</span></button>
+                            </div>
+
+                    </form>
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock content %}
