@@ -1,14 +1,20 @@
 
 from django.conf import settings
-from django.urls import path
+from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView,LogoutView
 from login_app import roomviews, staffviews
 from.import views
 from .import staffviews,adminviews,parentviews
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
-
+#from parentviews import hellowworldview
+from login_app import parentviews
+from rest_framework import routers
+#from django.conf.urls import url
+from django.urls import re_path as url
+#from .views import FileView
 urlpatterns = [
+    #url('upload/', FileView.as_view(), name='file-upload'),
     path('',views.home,name="home"),  
     path('register/',views.register,name="register"),
     path('teachersignup/',views.teacher_signup_view,name='teachersignup'),  
@@ -51,8 +57,9 @@ urlpatterns = [
 
 #rooms
     path('rooms/',roomviews.rooms,name="rooms"),
+    path('parent_schedule/',parentviews.parent_schedule,name="parent_schedule"),
+    path('post_image',parentviews.post_image,name="post_image")
     
 ]    
-if settings.DEBUG:
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

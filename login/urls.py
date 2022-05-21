@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 
 from django.contrib.auth import views as auth_views
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
+from login import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('login_app.urls')),
-   
+
+
 
 #reset password
  #path('password_reset/',auth_views.PasswordResetView.as_view(template_name='forgot-password.html'),name="forgot"),
@@ -31,6 +34,13 @@ urlpatterns = [
  #path('password_reset/complete/',auth_views.PasswordResetCompleteView.as_view(),name="signin"),
 
 ]
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

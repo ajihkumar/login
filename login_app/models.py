@@ -109,6 +109,8 @@ class CustomUser(AbstractBaseUser):
         return True
 
 
+#class parent_schedule(models.Model):
+ #   name=models.ForeignKey(StudentExtra,on_delete = models.CASCADE,null =True)
 
 
 
